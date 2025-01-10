@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Image </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+    }
+    h1 {
+      font-size: 2rem;
+      color: black;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    img {
+      width: 600px;
+      height: auto;
+      border: 5px solid black;
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <h1> Image </h1>
+
+  <div class="image-container">
+    <img id="slideshowImage" src="image1.jpg" alt="Slideshow Image">
+  </div>
+
+  <script>
+    // Array of image paths
+    let images = ["51.jpeg", "52.jpeg", "53.jpeg", "54.jpeg","55.jpeg", "56.jpeg"];
+    let currentIndex = 0;
+
+    function changeImage() {
+      const imgElement = document.getElementById("slideshowImage");
+      currentIndex = (currentIndex + 1) % images.length; // Cycle through images
+      imgElement.style.opacity = "0"; // Fade out effect
+      setTimeout(() => {
+        imgElement.src = images[currentIndex];
+        imgElement.style.opacity = "1"; // Fade in effect
+      }, 500);
+    }
+
+    // Change image every 1 second (1000 milliseconds)
+    setInterval(changeImage, 1000);
+  </script>
+</body>
+</html>
